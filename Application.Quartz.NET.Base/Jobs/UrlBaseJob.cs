@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http;
 
-namespace Application.Quartz.NET.JobBase
+namespace Application.Quartz.NET.Base
 {
     public class UrlBaseJob : IJob
     {
@@ -12,7 +12,7 @@ namespace Application.Quartz.NET.JobBase
             try
             {
                 HttpClient hc = new HttpClient();
-                HttpResponseMessage responsemessage =  await hc.GetAsync(context.JobDetail.JobDataMap["requestUrl"].ToString());
+                HttpResponseMessage responsemessage = await hc.GetAsync(context.JobDetail.JobDataMap["requestUrl"].ToString());
                 //写日志
                 //responsemessage.Content
             }

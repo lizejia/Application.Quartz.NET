@@ -1,12 +1,9 @@
 ﻿using Quartz;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Application.Quartz.NET.Service
+namespace Application.Quartz.NET.Base
 {
     /// <summary>
     /// Job监听器

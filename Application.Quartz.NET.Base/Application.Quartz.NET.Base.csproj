@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA5873E7-62BA-4B90-9556-E803FA6FC897}</ProjectGuid>
+    <ProjectGuid>{F6A1B73D-0AA2-4F64-977C-BC38EA1B0B6F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Application.Quartz.NET.JobBase</RootNamespace>
-    <AssemblyName>Application.Quartz.NET.JobBase</AssemblyName>
+    <RootNamespace>Application.Quartz.NET.Base</RootNamespace>
+    <AssemblyName>Application.Quartz.NET.Base</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,10 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyJobListener.cs" />
+    <Compile Include="Jobs\UrlBaseJob.cs" />
+    <Compile Include="Listener\MyJobListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UrlBaseJob.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

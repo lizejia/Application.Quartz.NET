@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using Application.Quartz.NET.Base;
+using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Matchers;
 using Quartz.Logging;
@@ -30,6 +31,7 @@ namespace Application.Quartz.NET.Service
             properties["quartz.scheduler.exporter.channelName"] = "httpQuartz";
             properties["quartz.scheduler.exporter.rejectRemoteRequests"] = "true";
 
+            properties["quartz.serializer.type"] = "binary";
             properties["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz";
             properties["quartz.threadPool.threadCount"] = "10";
             properties["quartz.threadPool.threadPriority"] = "Normal";
@@ -48,12 +50,12 @@ namespace Application.Quartz.NET.Service
             //数据源名称
             properties["quartz.jobStore.dataSource"] = "myDS";
             //连接字符串
-            properties["quartz.dataSource.myDS.connectionString"] = @"Data Source=.;Initial Catalog=QuartzManager;User ID=sa;Password=123456";
+            properties["quartz.dataSource.myDS.connectionString"] = @"Data Source=localhost;Initial Catalog=QuartzDB;User ID=sa;Password=123456";
             //版本
             properties["quartz.dataSource.myDS.provider"] = "SqlServer";
             //集群中的每个节点必须具有唯一的instanceId
             properties["quartz.scheduler.instanceId"] = "AUTO";
-            properties["quartz.serializer.type"] = "json";
+            
 
             ISchedulerFactory sf = new StdSchedulerFactory(properties);
             IScheduler sched = await sf.GetScheduler();
