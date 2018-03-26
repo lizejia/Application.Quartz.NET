@@ -34,7 +34,6 @@ namespace Application.Quartz.NET.Service
             properties["quartz.serializer.type"] = "binary";
             properties["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz";
             properties["quartz.threadPool.threadCount"] = "10";
-            properties["quartz.threadPool.threadPriority"] = "Normal";
             //集群配置
             properties["quartz.jobStore.clustered"] = "true";
             //存储类型
