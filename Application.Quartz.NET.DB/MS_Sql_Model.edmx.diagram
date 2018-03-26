@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5e896b4c7856447cbdb59a566f08a3ff" Name="Diagram1">
-        <EntityTypeShape EntityType="QuartzDBModel.Customer_JobInfo" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuartzDBModel.QRTZ_BLOB_TRIGGERS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuartzDBModel.QRTZ_CALENDARS" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QuartzDBModel.QRTZ_CRON_TRIGGERS" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
@@ -21,6 +20,7 @@
         <AssociationConnector Association="QuartzDBModel.FK_QRTZ_TRIGGERS_QRTZ_JOB_DETAILS" ManuallyRouted="false" />
         <AssociationConnector Association="QuartzDBModel.FK_QRTZ_SIMPLE_TRIGGERS_QRTZ_TRIGGERS" ManuallyRouted="false" />
         <AssociationConnector Association="QuartzDBModel.FK_QRTZ_SIMPROP_TRIGGERS_QRTZ_TRIGGERS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuartzDBModel.Customer_JobInfo" Width="1.5" PointX="10.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -20,12 +20,12 @@ namespace Application.Quartz.NET.DB
         public string TriggerName { get; set; }
         public string Cron { get; set; }
         public int TriggerState { get; set; }
-        public Nullable<System.DateTime> JobStartTime { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
-        public Nullable<System.DateTime> PreTime { get; set; }
-        public Nullable<System.DateTime> NextTime { get; set; }
+        public Nullable<System.DateTimeOffset> JobStartTime { get; set; }
+        public Nullable<System.DateTimeOffset> EndTime { get; set; }
+        public Nullable<System.DateTimeOffset> PreTime { get; set; }
+        public Nullable<System.DateTimeOffset> NextTime { get; set; }
         public string Description { get; set; }
-        public System.DateTime CreateTime { get; set; }
+        public System.DateTimeOffset CreateTime { get; set; }
         public string TriggerGroupName { get; set; }
         public string DLLName { get; set; }
         public string FullJobName { get; set; }

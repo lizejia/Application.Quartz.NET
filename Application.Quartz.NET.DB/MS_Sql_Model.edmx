@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuartzDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuartzDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Customer_JobInfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,12 +15,12 @@
           <Property Name="TriggerName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Cron" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TriggerState" Type="int" Nullable="false" />
-          <Property Name="JobStartTime" Type="datetime" />
-          <Property Name="EndTime" Type="datetime" />
-          <Property Name="PreTime" Type="datetime" />
-          <Property Name="NextTime" Type="datetime" />
+          <Property Name="JobStartTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="EndTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="PreTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="NextTime" Type="datetimeoffset" Precision="7" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
           <Property Name="TriggerGroupName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="DLLName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="FullJobName" Type="nvarchar" MaxLength="300" Nullable="false" />
@@ -280,34 +280,10 @@
             <End Role="QRTZ_TRIGGERS" EntitySet="QRTZ_TRIGGERS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QuartzDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Customer_JobInfo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="JobGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TriggerName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cron" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TriggerState" Type="Int32" Nullable="false" />
-          <Property Name="JobStartTime" Type="DateTime" Precision="3" />
-          <Property Name="EndTime" Type="DateTime" Precision="3" />
-          <Property Name="PreTime" Type="DateTime" Precision="3" />
-          <Property Name="NextTime" Type="DateTime" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TriggerGroupName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DLLName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FullJobName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="Exception" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="RequestUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityType Name="QRTZ_BLOB_TRIGGERS">
           <Key>
             <PropertyRef Name="SCHED_NAME" />
@@ -539,7 +515,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="QuartzDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Customer_JobInfo" EntityType="Self.Customer_JobInfo" />
           <EntitySet Name="QRTZ_BLOB_TRIGGERS" EntityType="Self.QRTZ_BLOB_TRIGGERS" />
           <EntitySet Name="QRTZ_CALENDARS" EntityType="Self.QRTZ_CALENDARS" />
           <EntitySet Name="QRTZ_CRON_TRIGGERS" EntityType="Self.QRTZ_CRON_TRIGGERS" />
@@ -567,37 +542,37 @@
             <End Role="QRTZ_TRIGGERS" EntitySet="QRTZ_TRIGGERS" />
             <End Role="QRTZ_SIMPROP_TRIGGERS" EntitySet="QRTZ_SIMPROP_TRIGGERS" />
           </AssociationSet>
+          <EntitySet Name="Customer_JobInfo" EntityType="QuartzDBModel.Customer_JobInfo" />
         </EntityContainer>
+        <EntityType Name="Customer_JobInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TriggerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Cron" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TriggerState" Type="Int32" Nullable="false" />
+          <Property Name="JobStartTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="EndTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="PreTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="NextTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="TriggerGroupName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DLLName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullJobName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Exception" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="RequestUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QuartzDBModelStoreContainer" CdmEntityContainer="QuartzDBEntities">
-          <EntitySetMapping Name="Customer_JobInfo">
-            <EntityTypeMapping TypeName="QuartzDBModel.Customer_JobInfo">
-              <MappingFragment StoreEntitySet="Customer_JobInfo">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="JobGroupName" ColumnName="JobGroupName" />
-                <ScalarProperty Name="JobName" ColumnName="JobName" />
-                <ScalarProperty Name="TriggerName" ColumnName="TriggerName" />
-                <ScalarProperty Name="Cron" ColumnName="Cron" />
-                <ScalarProperty Name="TriggerState" ColumnName="TriggerState" />
-                <ScalarProperty Name="JobStartTime" ColumnName="JobStartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="PreTime" ColumnName="PreTime" />
-                <ScalarProperty Name="NextTime" ColumnName="NextTime" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="TriggerGroupName" ColumnName="TriggerGroupName" />
-                <ScalarProperty Name="DLLName" ColumnName="DLLName" />
-                <ScalarProperty Name="FullJobName" ColumnName="FullJobName" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Exception" ColumnName="Exception" />
-                <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="QRTZ_BLOB_TRIGGERS">
             <EntityTypeMapping TypeName="QuartzDBModel.QRTZ_BLOB_TRIGGERS">
               <MappingFragment StoreEntitySet="QRTZ_BLOB_TRIGGERS">
@@ -741,6 +716,30 @@
                 <ScalarProperty Name="CALENDAR_NAME" ColumnName="CALENDAR_NAME" />
                 <ScalarProperty Name="MISFIRE_INSTR" ColumnName="MISFIRE_INSTR" />
                 <ScalarProperty Name="JOB_DATA" ColumnName="JOB_DATA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_JobInfo">
+            <EntityTypeMapping TypeName="QuartzDBModel.Customer_JobInfo">
+              <MappingFragment StoreEntitySet="Customer_JobInfo">
+                <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="FullJobName" ColumnName="FullJobName" />
+                <ScalarProperty Name="DLLName" ColumnName="DLLName" />
+                <ScalarProperty Name="TriggerGroupName" ColumnName="TriggerGroupName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NextTime" ColumnName="NextTime" />
+                <ScalarProperty Name="PreTime" ColumnName="PreTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="JobStartTime" ColumnName="JobStartTime" />
+                <ScalarProperty Name="TriggerState" ColumnName="TriggerState" />
+                <ScalarProperty Name="Cron" ColumnName="Cron" />
+                <ScalarProperty Name="TriggerName" ColumnName="TriggerName" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="JobGroupName" ColumnName="JobGroupName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
