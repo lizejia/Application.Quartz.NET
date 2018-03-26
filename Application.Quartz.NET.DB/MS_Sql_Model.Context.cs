@@ -25,7 +25,6 @@ namespace Application.Quartz.NET.DB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer_JobInfo> Customer_JobInfo { get; set; }
         public virtual DbSet<QRTZ_BLOB_TRIGGERS> QRTZ_BLOB_TRIGGERS { get; set; }
         public virtual DbSet<QRTZ_CALENDARS> QRTZ_CALENDARS { get; set; }
         public virtual DbSet<QRTZ_CRON_TRIGGERS> QRTZ_CRON_TRIGGERS { get; set; }
@@ -37,5 +36,6 @@ namespace Application.Quartz.NET.DB
         public virtual DbSet<QRTZ_SIMPLE_TRIGGERS> QRTZ_SIMPLE_TRIGGERS { get; set; }
         public virtual DbSet<QRTZ_SIMPROP_TRIGGERS> QRTZ_SIMPROP_TRIGGERS { get; set; }
         public virtual DbSet<QRTZ_TRIGGERS> QRTZ_TRIGGERS { get; set; }
+        public virtual DbSet<Customer_JobInfo> Customer_JobInfo { get; set; }
     }
 }
