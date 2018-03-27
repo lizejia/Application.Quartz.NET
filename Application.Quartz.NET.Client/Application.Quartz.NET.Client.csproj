@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Job\JobHelper.cs" />
     <Compile Include="Listener\RemoteClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,7 +54,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Job\" />
+    <ProjectReference Include="..\Application.Quartz.NET.DB\Application.Quartz.NET.DB.csproj">
+      <Project>{b22fac9e-6459-46f7-9981-7bcc3dd4526f}</Project>
+      <Name>Application.Quartz.NET.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
